@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.14.4
-Release  : 10
-URL      : https://download.kde.org/stable/plasma/5.14.4/kde-gtk-config-5.14.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.14.4/kde-gtk-config-5.14.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.14.4/kde-gtk-config-5.14.4.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.14.5
+Release  : 11
+URL      : https://download.kde.org/stable/plasma/5.14.5/kde-gtk-config-5.14.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.14.5/kde-gtk-config-5.14.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.14.5/kde-gtk-config-5.14.5.tar.xz.sig
+Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: kde-gtk-config-data = %{version}-%{release}
@@ -74,22 +74,22 @@ locales components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.14.4
+%setup -q -n kde-gtk-config-5.14.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543392198
+export SOURCE_DATE_EPOCH=1546962836
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543392198
+export SOURCE_DATE_EPOCH=1546962836
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING
