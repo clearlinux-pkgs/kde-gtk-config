@@ -6,7 +6,7 @@
 #
 Name     : kde-gtk-config
 Version  : 5.15.4
-Release  : 17
+Release  : 18
 URL      : https://download.kde.org/stable/plasma/5.15.4/kde-gtk-config-5.15.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.15.4/kde-gtk-config-5.15.4.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.15.4/kde-gtk-config-5.15.4.tar.xz.sig
@@ -19,8 +19,10 @@ Requires: kde-gtk-config-license = %{version}-%{release}
 Requires: kde-gtk-config-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : gsettings-desktop-schemas
 BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : gtk+-dev
+BuildRequires : karchive-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(atk)
@@ -80,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554218842
+export SOURCE_DATE_EPOCH=1555326843
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -88,7 +90,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1554218842
+export SOURCE_DATE_EPOCH=1555326843
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING
