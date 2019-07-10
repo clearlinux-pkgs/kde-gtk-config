@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.16.2
-Release  : 23
-URL      : https://download.kde.org/stable/plasma/5.16.2/kde-gtk-config-5.16.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.2/kde-gtk-config-5.16.2.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.16.2/kde-gtk-config-5.16.2.tar.xz.sig
+Version  : 5.16.3
+Release  : 24
+URL      : https://download.kde.org/stable/plasma/5.16.3/kde-gtk-config-5.16.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.3/kde-gtk-config-5.16.3.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.16.3/kde-gtk-config-5.16.3.tar.xz.sig
 Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -19,7 +19,6 @@ Requires: kde-gtk-config-license = %{version}-%{release}
 Requires: kde-gtk-config-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : gtk+-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : pkg-config
@@ -73,14 +72,14 @@ locales components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.16.2
+%setup -q -n kde-gtk-config-5.16.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561472998
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562724779
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,11 +91,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1561472998
+export SOURCE_DATE_EPOCH=1562724779
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING
