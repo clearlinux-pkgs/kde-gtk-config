@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.16.4
-Release  : 25
-URL      : https://download.kde.org/stable/plasma/5.16.4/kde-gtk-config-5.16.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.4/kde-gtk-config-5.16.4.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.4/kde-gtk-config-5.16.4.tar.xz.sig
+Version  : 5.16.5
+Release  : 26
+URL      : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz.sig
 Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -29,6 +29,7 @@ BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
+BuildRequires : pkgconfig(harfbuzz)
 BuildRequires : pkgconfig(pango)
 BuildRequires : qtbase-dev mesa-dev
 
@@ -72,16 +73,17 @@ locales components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.16.4
+%setup -q -n kde-gtk-config-5.16.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564500883
+export SOURCE_DATE_EPOCH=1567641057
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -95,7 +97,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564500883
+export SOURCE_DATE_EPOCH=1567641057
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING
