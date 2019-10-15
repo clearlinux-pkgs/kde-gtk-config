@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.16.5
-Release  : 26
-URL      : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.5/kde-gtk-config-5.16.5.tar.xz.sig
+Version  : 5.17.0
+Release  : 27
+URL      : https://download.kde.org/stable/plasma/5.17.0/kde-gtk-config-5.17.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.0/kde-gtk-config-5.17.0.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.17.0/kde-gtk-config-5.17.0.tar.xz.sig
 Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -73,14 +73,14 @@ locales components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.16.5
+%setup -q -n kde-gtk-config-5.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567641057
+export SOURCE_DATE_EPOCH=1571153241
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -93,15 +93,15 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567641057
+export SOURCE_DATE_EPOCH=1571153241
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/COPYING.LIB
+cp %{_builddir}/kde-gtk-config-5.17.0/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kde-gtk-config-5.17.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
@@ -136,8 +136,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kde-gtk-config/COPYING
-/usr/share/package-licenses/kde-gtk-config/COPYING.LIB
+/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
 
 %files locales -f kde-gtk-config.lang
 %defattr(-,root,root,-)
