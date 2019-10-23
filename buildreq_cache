@@ -1,4 +1,5 @@
-5.16.2
+5.17.1
 gsettings-desktop-schemas
 gsettings-desktop-schemas-dev
 karchive-dev
+util-linux
