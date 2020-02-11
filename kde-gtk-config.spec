@@ -5,18 +5,17 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.17.5
-Release  : 32
-URL      : https://download.kde.org/stable/plasma/5.17.5/kde-gtk-config-5.17.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.17.5/kde-gtk-config-5.17.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.17.5/kde-gtk-config-5.17.5.tar.xz.sig
+Version  : 5.18.0
+Release  : 33
+URL      : https://download.kde.org/stable/plasma/5.18.0/kde-gtk-config-5.18.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.0/kde-gtk-config-5.18.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.0/kde-gtk-config-5.18.0.tar.xz.sig
 Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: kde-gtk-config-data = %{version}-%{release}
 Requires: kde-gtk-config-lib = %{version}-%{release}
 Requires: kde-gtk-config-license = %{version}-%{release}
-Requires: kde-gtk-config-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : gtk+-dev
@@ -34,9 +33,7 @@ BuildRequires : pkgconfig(pango)
 BuildRequires : qtbase-dev mesa-dev
 
 %description
-KDE GTK CONFIG v1.7
-----------------------
-This program it's licensed under GPLv3
+No detailed description available
 
 %package data
 Summary: data components for the kde-gtk-config package.
@@ -64,24 +61,16 @@ Group: Default
 license components for the kde-gtk-config package.
 
 
-%package locales
-Summary: locales components for the kde-gtk-config package.
-Group: Default
-
-%description locales
-locales components for the kde-gtk-config package.
-
-
 %prep
-%setup -q -n kde-gtk-config-5.17.5
-cd %{_builddir}/kde-gtk-config-5.17.5
+%setup -q -n kde-gtk-config-5.18.0
+cd %{_builddir}/kde-gtk-config-5.18.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578425584
+export SOURCE_DATE_EPOCH=1581440959
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -98,48 +87,32 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578425584
+export SOURCE_DATE_EPOCH=1581440959
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.17.5/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kde-gtk-config-5.17.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kde-gtk-config-5.18.0/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kde-gtk-config-5.18.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
-%find_lang kde-gtk-config
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/kconf_update_bin/gtk_theme
 /usr/lib64/libexec/gtk3_preview
 /usr/lib64/libexec/gtk_preview
 /usr/lib64/libexec/reload_gtk_apps
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/icons/hicolor/128x128/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/16x16/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/22x22/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/24x24/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/256x256/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/32x32/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/48x48/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/64x64/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/8x8/apps/kde-gtk-config.png
-/usr/share/icons/hicolor/scalable/apps/kde-gtk-config.svgz
 /usr/share/kcm-gtk-module/preview.ui
-/usr/share/knsrcfiles/cgcgtk3.knsrc
-/usr/share/knsrcfiles/cgctheme.knsrc
-/usr/share/kservices5/kde-gtk-config.desktop
+/usr/share/kconf_update/gtkconfig.upd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/qt5/plugins/kcm_kdegtkconfig.so
+/usr/lib64/qt5/plugins/kf5/kded/gtkconfig.so
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 /usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-
-%files locales -f kde-gtk-config.lang
-%defattr(-,root,root,-)
-
