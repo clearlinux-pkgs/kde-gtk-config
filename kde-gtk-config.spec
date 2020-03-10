@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.18.2
-Release  : 35
-URL      : https://download.kde.org/stable/plasma/5.18.2/kde-gtk-config-5.18.2.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.18.2/kde-gtk-config-5.18.2.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.18.2/kde-gtk-config-5.18.2.tar.xz.sig
+Version  : 5.18.3
+Release  : 36
+URL      : https://download.kde.org/stable/plasma/5.18.3/kde-gtk-config-5.18.3.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.3/kde-gtk-config-5.18.3.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.3/kde-gtk-config-5.18.3.tar.xz.sig
 Summary  : GTK2 and GTK3 Configurator for KDE
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -62,15 +62,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.18.2
-cd %{_builddir}/kde-gtk-config-5.18.2
+%setup -q -n kde-gtk-config-5.18.3
+cd %{_builddir}/kde-gtk-config-5.18.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582677690
+export SOURCE_DATE_EPOCH=1583860331
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -87,11 +87,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1582677690
+export SOURCE_DATE_EPOCH=1583860331
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.18.2/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kde-gtk-config-5.18.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kde-gtk-config-5.18.3/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kde-gtk-config-5.18.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
