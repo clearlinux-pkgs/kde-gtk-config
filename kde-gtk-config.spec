@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.18.4.1
-Release  : 38
-URL      : https://download.kde.org/stable/plasma/5.18.4/kde-gtk-config-5.18.4.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.18.4/kde-gtk-config-5.18.4.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.18.4/kde-gtk-config-5.18.4.1.tar.xz.sig
-Summary  : GTK2 and GTK3 Configurator for KDE
+Version  : 5.18.5
+Release  : 39
+URL      : https://download.kde.org/stable/plasma/5.18.5/kde-gtk-config-5.18.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.5/kde-gtk-config-5.18.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.5/kde-gtk-config-5.18.5.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: kde-gtk-config-data = %{version}-%{release}
@@ -18,7 +18,12 @@ Requires: kde-gtk-config-lib = %{version}-%{release}
 Requires: kde-gtk-config-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
 BuildRequires : gtk+-dev
+BuildRequires : kconfig-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kiconthemes-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(atk)
@@ -62,36 +67,35 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.18.4.1
-cd %{_builddir}/kde-gtk-config-5.18.4.1
+%setup -q -n kde-gtk-config-5.18.5
+cd %{_builddir}/kde-gtk-config-5.18.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585703228
+export SOURCE_DATE_EPOCH=1588700007
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1585703228
+export SOURCE_DATE_EPOCH=1588700007
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.18.4.1/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kde-gtk-config-5.18.4.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kde-gtk-config-5.18.5/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kde-gtk-config-5.18.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
