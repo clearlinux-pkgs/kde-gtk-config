@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.19.0
-Release  : 40
-URL      : https://download.kde.org/stable/plasma/5.19.0/kde-gtk-config-5.19.0.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.0/kde-gtk-config-5.19.0.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.0/kde-gtk-config-5.19.0.tar.xz.sig
+Version  : 5.19.1
+Release  : 41
+URL      : https://download.kde.org/stable/plasma/5.19.1/kde-gtk-config-5.19.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.19.1/kde-gtk-config-5.19.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.19.1/kde-gtk-config-5.19.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -19,7 +19,6 @@ Requires: kde-gtk-config-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
-BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : kconfig-dev
 BuildRequires : kconfigwidgets-dev
 BuildRequires : kcoreaddons-dev
@@ -64,15 +63,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.19.0
-cd %{_builddir}/kde-gtk-config-5.19.0
+%setup -q -n kde-gtk-config-5.19.1
+cd %{_builddir}/kde-gtk-config-5.19.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591741658
+export SOURCE_DATE_EPOCH=1592337006
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -88,11 +87,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591741658
+export SOURCE_DATE_EPOCH=1592337006
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.19.0/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kde-gtk-config-5.19.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kde-gtk-config-5.19.1/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kde-gtk-config-5.19.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
