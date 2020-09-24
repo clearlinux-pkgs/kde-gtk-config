@@ -6,7 +6,7 @@
 #
 Name     : kde-gtk-config
 Version  : 5.19.4
-Release  : 43
+Release  : 44
 URL      : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz.sig
