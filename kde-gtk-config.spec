@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.19.4
-Release  : 44
-URL      : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.19.4/kde-gtk-config-5.19.4.tar.xz.sig
+Version  : 5.20.0
+Release  : 45
+URL      : https://download.kde.org/stable/plasma/5.20.0/kde-gtk-config-5.20.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.20.0/kde-gtk-config-5.20.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.20.0/kde-gtk-config-5.20.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0
 Requires: kde-gtk-config-data = %{version}-%{release}
 Requires: kde-gtk-config-lib = %{version}-%{release}
 Requires: kde-gtk-config-license = %{version}-%{release}
@@ -23,6 +23,7 @@ BuildRequires : kconfig-dev
 BuildRequires : kconfigwidgets-dev
 BuildRequires : kcoreaddons-dev
 BuildRequires : kdbusaddons-dev
+BuildRequires : kdecoration-dev
 BuildRequires : kguiaddons-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : pkg-config
@@ -32,9 +33,11 @@ BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : sassc
 
 %description
-No detailed description available
+# KDE GTK Configurator
+This project aims to provide a smooth experience for the users of GNOME/GTK applications on Plasma Desktop.
 
 %package data
 Summary: data components for the kde-gtk-config package.
@@ -63,15 +66,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.19.4
-cd %{_builddir}/kde-gtk-config-5.19.4
+%setup -q -n kde-gtk-config-5.20.0
+cd %{_builddir}/kde-gtk-config-5.20.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1597638823
+export SOURCE_DATE_EPOCH=1602635672
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -87,11 +90,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1597638823
+export SOURCE_DATE_EPOCH=1602635672
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.19.4/COPYING %{buildroot}/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kde-gtk-config-5.19.4/COPYING.LIB %{buildroot}/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kde-gtk-config-5.20.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
@@ -100,20 +108,23 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/kconf_update_bin/gtk_theme
 /usr/lib64/libexec/gtk3_preview
-/usr/lib64/libexec/gtk_preview
-/usr/lib64/libexec/reload_gtk_apps
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/kcm-gtk-module/preview.ui
 /usr/share/kconf_update/gtkconfig.upd
+/usr/share/themes/Breeze/window_decorations.css
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/gtk-3.0/modules/libcolorreload-gtk-module.so
+/usr/lib64/gtk-3.0/modules/libwindow-decorations-gtk-module.so
 /usr/lib64/qt5/plugins/kf5/kded/gtkconfig.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kde-gtk-config/01a6b4bf79aca9b556822601186afab86e8c4fbf
-/usr/share/package-licenses/kde-gtk-config/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/kde-gtk-config/2a638514c87c4923c0570c55822620fad56f2a33
+/usr/share/package-licenses/kde-gtk-config/6091db0aead0d90182b93d3c0d09ba93d188f907
+/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/kde-gtk-config/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/kde-gtk-config/e712eadfab0d2357c0f50f599ef35ee0d87534cb
