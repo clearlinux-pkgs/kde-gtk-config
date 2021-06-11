@@ -1,5 +1,5 @@
 PKG_NAME := kde-gtk-config
-URL = https://download.kde.org/stable/plasma/5.21.4/kde-gtk-config-5.21.4.tar.xz
+URL = https://download.kde.org/stable/plasma/5.22.0/kde-gtk-config-5.22.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
