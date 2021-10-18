@@ -4,7 +4,7 @@
 #
 Name     : kde-gtk-config
 Version  : 5.23.0
-Release  : 56
+Release  : 57
 URL      : https://download.kde.org/stable/plasma/5.23.0/kde-gtk-config-5.23.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.23.0/kde-gtk-config-5.23.0.tar.xz
 Summary  : No detailed summary available
