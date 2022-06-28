@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.25.1
-Release  : 70
-URL      : https://download.kde.org/stable/plasma/5.25.1/kde-gtk-config-5.25.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.1/kde-gtk-config-5.25.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.1/kde-gtk-config-5.25.1.tar.xz.sig
+Version  : 5.25.2
+Release  : 71
+URL      : https://download.kde.org/stable/plasma/5.25.2/kde-gtk-config-5.25.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.25.2/kde-gtk-config-5.25.2.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.25.2/kde-gtk-config-5.25.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause GPL-2.0 GPL-3.0
@@ -60,15 +60,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.25.1
-cd %{_builddir}/kde-gtk-config-5.25.1
+%setup -q -n kde-gtk-config-5.25.2
+cd %{_builddir}/kde-gtk-config-5.25.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655829610
+export SOURCE_DATE_EPOCH=1656444996
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -84,16 +84,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655829610
+export SOURCE_DATE_EPOCH=1656444996
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kde-gtk-config-5.25.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kde-gtk-config-5.25.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
