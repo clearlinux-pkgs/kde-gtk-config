@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.26.5
-Release  : 80
-URL      : https://download.kde.org/stable/plasma/5.26.5/kde-gtk-config-5.26.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.5/kde-gtk-config-5.26.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.5/kde-gtk-config-5.26.5.tar.xz.sig
+Version  : 5.27.0
+Release  : 81
+URL      : https://download.kde.org/stable/plasma/5.27.0/kde-gtk-config-5.27.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.0/kde-gtk-config-5.27.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.0/kde-gtk-config-5.27.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0
@@ -63,15 +63,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.26.5
-cd %{_builddir}/kde-gtk-config-5.26.5
+%setup -q -n kde-gtk-config-5.27.0
+cd %{_builddir}/kde-gtk-config-5.27.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673304821
+export SOURCE_DATE_EPOCH=1676683046
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -87,7 +87,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1673304821
+export SOURCE_DATE_EPOCH=1676683046
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp %{_builddir}/kde-gtk-config-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
