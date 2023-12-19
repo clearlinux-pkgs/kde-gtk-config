@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 5.27.9
-Release  : 93
-URL      : https://download.kde.org/stable/plasma/5.27.9/kde-gtk-config-5.27.9.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.9/kde-gtk-config-5.27.9.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.9/kde-gtk-config-5.27.9.tar.xz.sig
+Version  : 5.27.10
+Release  : 94
+URL      : https://download.kde.org/stable/plasma/5.27.10/kde-gtk-config-5.27.10.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.10/kde-gtk-config-5.27.10.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.10/kde-gtk-config-5.27.10.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0
@@ -66,15 +66,15 @@ license components for the kde-gtk-config package.
 
 
 %prep
-%setup -q -n kde-gtk-config-5.27.9
-cd %{_builddir}/kde-gtk-config-5.27.9
+%setup -q -n kde-gtk-config-5.27.10
+cd %{_builddir}/kde-gtk-config-5.27.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701983246
+export SOURCE_DATE_EPOCH=1702979775
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -133,7 +133,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701983246
+export SOURCE_DATE_EPOCH=1702979775
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp %{_builddir}/kde-gtk-config-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
