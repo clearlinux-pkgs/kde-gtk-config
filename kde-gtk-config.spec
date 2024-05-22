@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kde-gtk-config
-Version  : 6.0.4
-Release  : 102
-URL      : https://download.kde.org/stable/plasma/6.0.4/kde-gtk-config-6.0.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/6.0.4/kde-gtk-config-6.0.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/6.0.4/kde-gtk-config-6.0.4.tar.xz.sig
+Version  : 6.0.5
+Release  : 103
+URL      : https://download.kde.org/stable/plasma/6.0.5/kde-gtk-config-6.0.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/6.0.5/kde-gtk-config-6.0.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/6.0.5/kde-gtk-config-6.0.5.tar.xz.sig
 Source2  : D7574483BB57B18D.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -74,15 +74,15 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) D7574483BB57B18D' gpg.status
-%setup -q -n kde-gtk-config-6.0.4
-cd %{_builddir}/kde-gtk-config-6.0.4
+%setup -q -n kde-gtk-config-6.0.5
+cd %{_builddir}/kde-gtk-config-6.0.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713293559
+export SOURCE_DATE_EPOCH=1716392242
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,7 +143,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713293559
+export SOURCE_DATE_EPOCH=1716392242
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kde-gtk-config
 cp %{_builddir}/kde-gtk-config-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kde-gtk-config/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
