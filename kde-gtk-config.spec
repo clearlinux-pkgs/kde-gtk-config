@@ -9,7 +9,7 @@
 #
 Name     : kde-gtk-config
 Version  : 6.3.1
-Release  : 118
+Release  : 119
 URL      : https://download.kde.org/stable/plasma/6.3.1/kde-gtk-config-6.3.1.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.3.1/kde-gtk-config-6.3.1.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.3.1/kde-gtk-config-6.3.1.tar.xz.sig
